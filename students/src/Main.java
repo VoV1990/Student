@@ -12,10 +12,20 @@ public class Main {
         students[8] = new Student("Sergeev S.S.", 4, new int[]{7, 6, 7, 8, 9});
         students[9] = new Student("Belov R.A.", 4, new int[]{5, 5, 4, 4, 4});
 
-        getHonourStudents(students);
+        printHonourStudents(students);
     }
 
-    private static void getHonourStudents(Student[] students) {
-        for (Student student : students) student.printHonourStudents();
+    public static void printHonourStudents(Student[] students) {
+        boolean flag = false;
+        for(Student student : students) {
+            for (Integer i : student.academicPerformance) {
+                if(i < 9) {
+                    flag = false;
+                    break;
+                }
+                else flag = true;
+            }
+            if(flag) System.out.println(student);
+        }
     }
 }
